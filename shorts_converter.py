@@ -198,7 +198,8 @@ class ClipboardMonitor(QMainWindow):
             with open(bat_file, "w") as f:
                 f.write("@echo off\n")
                 f.write(f"cd /d \"{os.path.dirname(script_path)}\"\n")
-                f.write(f"python \"{script_path}\"\n")
+                f.write(f'start "" "{script_path}"\n')
+                f.write("exit\n")
         else:
             if os.path.exists(bat_file):
                 os.remove(bat_file)
